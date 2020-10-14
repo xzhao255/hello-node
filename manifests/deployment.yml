@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: hellonode 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hellonode
+  template:
+    metadata:
+      labels:
+        app: hellonode 
+    spec:
+      containers:
+        - name: hellonode 
+          image: xunzhaoacr1.azurecr.io/hellonode
+          ports:
+          - containerPort: 80
