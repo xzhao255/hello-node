@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hellonode-deployment #deployment name
+spec:
+  selector:
+    matchLabels:
+      app: hellonode-pod # matching pod name
+  template:
+    metadata:
+      labels:
+        app: hellonode-pod  # pod name
+    spec:
+      containers:
+      - name: hellonode-container  # container name
+        image: xunzhaoacr1.azurecr.io/hellonode:1.0.2
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
